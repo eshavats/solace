@@ -125,6 +125,9 @@ input::placeholder {
   object-fit: cover;
   height: auto; /* only if you want fixed height */
 }
+.my-message {
+  margin-top: 50px !important;
+}
 
 @media (max-width: 990px) {
   form {

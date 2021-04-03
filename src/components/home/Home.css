@@ -1,1 +1,10 @@
-
+.homepage .avatar {
+  background-color: #407bff;
+  vertical-align: middle;
+}
+.homepage .jumbotron {
+  padding: 1.5rem !important;
+}
+.homepage .my-message {
+  margin-top: 50px !important;
+}

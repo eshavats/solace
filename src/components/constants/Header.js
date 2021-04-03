@@ -15,7 +15,7 @@ class Header extends React.Component {
               className="d-inline-block align-top mr-2"
               alt=""
             />
-            Distress
+            Solace
           </a>
           <button
             className="navbar-toggler"

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { message } from "antd";
 import "./Register.css";
 import CoronaImg from "./img/corona1.gif";
 
@@ -7,12 +9,34 @@ class Register extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
+    const { name, email, password, confirmPassword } = this.state;
 
-    if (this.state.password !== this.state.confirmPassword) {
-      alert("passwords don't match");
+    if (password !== confirmPassword) {
+      message.error({ content: "Passwords don't match!" });
       return;
     }
 
+    try {
+      await axios.post(
+        `https://solace-hack-kj.herokuapp.com/api/users/sign-up`,
+        {
+          name,
+          email,
+          password,
+        }
+      );
+      message.success({
+        content: "Registered Successfully!",
+        duration: 5,
+        className: "my-message",
+      });
+    } catch (error) {
+      message.error({
+        content: "Registration Failed!",
+        duration: 5,
+        className: "my-message",
+      });
+    }
   };
 
   handleChange = (event) => {
