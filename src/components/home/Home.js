@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+
 import "./Home.css";
 import { articles } from "./rawData";
 import Blog from "../constants/Comment";
@@ -33,13 +35,16 @@ class Home extends Component {
     status: "",
   };
 
+  constructor(props) {
+    super(props);
+  }
+
   async componentDidMount() {
     try {
       const res = await axios.get(
         `https://api.covid19india.org/state_district_wise.json`
       );
       const stateData = res.data["Maharashtra"]["districtData"];
-      console.log(stateData);
 
       this.setState({
         data: stateData,
@@ -54,8 +59,6 @@ class Home extends Component {
   }
 
   handleSubmit = async () => {
-    console.log("SUBMITTED");
-    console.log(this.state);
 
     const { title, body, status } = this.state;
 
@@ -68,7 +71,9 @@ class Home extends Component {
           status,
         },
         {
-          "Authorization": `Bearer ${this.token}`
+          headers: {
+            Authorization: `Bearer ${this.props.user}`,
+          },
         }
       );
       message.success({
@@ -89,12 +94,12 @@ class Home extends Component {
     const { name, value } = event.target;
 
     this.setState({ ...this.state, [name]: value });
-    console.log(this.state);
   };
 
   render() {
     var data = this.state.data;
-    console.log(data);
+    console.log(this.props.user);
+
     if (this.state.loading) {
       return (
         <Space style={{ textAlign: "center" }} size="middle">
@@ -113,9 +118,9 @@ class Home extends Component {
         />
         <div className="site-card-wrapper">
           <Row className="m-3" gutter={16}>
-            {articles.map((art) => {
+            {articles.map((art, key) => {
               return (
-                <Col span={8} className="p-3">
+                <Col key={key} span={8} className="p-3">
                   <Badge.Ribbon
                     text={`Active Cases: ${data[art.title]["active"]}`}
                   >
@@ -152,14 +157,14 @@ class Home extends Component {
           </Row>
         </div>
 
-        <div class="jumbotron jumbotron-fluid mt-3">
-          <div class="container">
-            <h1 class="display-4">Let's communicate</h1>
-            <p class="lead">
+        <div className="jumbotron jumbotron-fluid mt-3">
+          <div className="container">
+            <h1 className="display-4">Let's communicate</h1>
+            <p className="lead">
               Communication is key. Let us know how you're feeling.. It'll stay
               <b> anonymous</b>
             </p>
-            <hr class="my-4" />
+            <hr className="my-4" />
             <Comment
               avatar={
                 <Avatar
@@ -212,7 +217,7 @@ class Home extends Component {
           </div>
         </div>
         <div className="blogs" style={{ margin: "0 10rem" }}>
-          <h2 class="display-4">Find out how others are doing..</h2>
+          <h2 className="display-4">Find out how others are doing..</h2>
 
           <Blog
             title="My Recovery Story"
@@ -238,4 +243,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return { user: state.users };
+};
+
+export default connect(mapStateToProps)(Home);

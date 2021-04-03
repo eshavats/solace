@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+
 import { message } from "antd";
+import { setUser } from "../../redux/actions";
 import "./Register.css";
 import CoronaImg from "./img/corona1.gif";
 
@@ -17,7 +20,7 @@ class Register extends Component {
     }
 
     try {
-      await axios.post(
+      const res = await axios.post(
         `https://solace-hack-kj.herokuapp.com/api/users/sign-up`,
         {
           name,
@@ -25,6 +28,8 @@ class Register extends Component {
           password,
         }
       );
+      const token = res["data"]["token"];
+      this.props.setUser(token);
       message.success({
         content: "Registered Successfully!",
         duration: 5,
@@ -134,4 +139,9 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (token) =>
+    dispatch(setUser(token))
+});
+
+export default connect(null, mapDispatchToProps)(Register);

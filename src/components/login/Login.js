@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+
 import { message } from "antd";
 import "./Login.css";
+import { setUser } from "../../redux/actions";
+import history from "../history"
+
 import CoronaImg from "./img/corona1.gif";
 
 class Login extends Component {
@@ -13,18 +18,21 @@ class Login extends Component {
     const { email, password } = this.state;
 
     try {
-      const {token} = await axios.post(
+      const res  = await axios.post(
         `https://solace-hack-kj.herokuapp.com/api/users/sign-in`,
         {
           email,
           password,
         }
       );
+      const token = res["data"]["token"];
+      this.props.setUser(token);
       message.success({
         content: "Logged In Successfully!",
         duration: 5,
         className: "my-message",
       });
+      history.push('/home');
     } catch (error) {
       message.error({
         content: "Login Failed!",
@@ -114,4 +122,9 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (token) =>
+    dispatch(setUser(token))
+});
+
+export default connect(null, mapDispatchToProps)(Login);

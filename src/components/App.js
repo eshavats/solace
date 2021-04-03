@@ -1,16 +1,17 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 
 import Header from "./constants/Header";
 import Register from "./register/Register";
 import Login from "./login/Login";
 import Home from "./home/Home";
+import history from "./history"
 
 const App = () => {
   return (
     <div className="">
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Header />
           <Switch>
@@ -19,7 +20,7 @@ const App = () => {
             <Route path="/home" component={Home} />
           </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };
