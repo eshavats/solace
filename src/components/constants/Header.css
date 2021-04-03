@@ -1,0 +1,14 @@
+.my-header .navbar {
+  background-color: transparent !important;
+}
+.my-header .navbar-collapse {
+  background-color: white !important;
+}
+.my-header .navbar-brand {
+  color: #22A9E0;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.5rem;
+}
+.my-header .nav-link {
+  font-size: 1.2rem;
+}

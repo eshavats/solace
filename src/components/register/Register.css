@@ -1,0 +1,191 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.form-group label {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 400px;
+  height: 48px;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #434343;
+  border-radius: 5px;
+  border: 1px solid #d6d6d6;
+  padding: 6px 12px;
+}
+
+.form-group {
+  margin-top: 2rem;
+}
+.input-group {
+  margin-top: 15px;
+}
+input[type="radio"] {
+  margin: 5px -12px;
+}
+
+.input-group label {
+  font-weight: 500;
+}
+
+.form-control:focus {
+  border-color: #abcdef !important;
+  box-shadow: 0 0 5px rgba(171, 205, 239, 1) !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: #434343;
+}
+
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #434343; /* Firefox */
+}
+
+.selectdiv select {
+  width: 400px;
+  height: 48px;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #434343;
+  border-radius: 5px;
+  border: 1px solid #d6d6d6;
+  padding: 6px 12px;
+  margin-top: 2rem;
+}
+
+.selectdiv {
+  position: relative;
+}
+
+.selectdiv:after {
+  content: "\f078";
+  font: normal normal normal 15px/1 FontAwesome;
+  color: #737b83;
+  right: 11px;
+  top: 22px;
+  height: 34px;
+  padding: 15px 0px 0px 8px;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+.selectdiv select {
+  -webkit-appearance: none;
+}
+
+.logdet {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+#btn {
+  background-color: #407BFF;
+  border-radius: 5px;
+  height: 48px;
+}
+.btn:hover {
+  color: white;
+  box-shadow: 0 0 3px #407BFF !important;
+}
+
+.radioname {
+  color: #5d4a41;
+  font-size: 15px;
+  padding: 0 5px;
+}
+
+.foot {
+  text-align: center;
+  margin-top: 30px;
+  letter-spacing: 0.6px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btn {
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.fit-image {
+  width: 100%;
+  object-fit: cover;
+  height: auto; /* only if you want fixed height */
+}
+
+@media (max-width: 990px) {
+  form {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 500px) {
+  .form-control {
+    width: 260px;
+    height: 35px;
+    background-color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    color: #737999;
+  }
+
+  .radioname {
+    font-size: 12px;
+  }
+  input[type="radio"] {
+    margin: 2px -12px;
+  }
+
+  .selectdiv select {
+    width: 260px;
+    height: 35px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #434343;
+  }
+
+  .selectdiv:after {
+    font: normal normal normal 12px/1 FontAwesome;
+    color: #737b83;
+    top: 16px;
+    height: 34px;
+    padding: 15px 0px 0px 8px;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  #btn {
+    height: 40px;
+  }
+
+  .form-control:focus {
+    font-size: 12px;
+    font-weight: 500;
+    color: #737999;
+  }
+
+  .logdet {
+    font-size: 25px;
+  }
+
+  form {
+    margin-top: 50px;
+  }
+}
+
+button:focus {
+  outline: 0 !important;
+}
