@@ -7,6 +7,7 @@ import Header from "./constants/Header";
 import Register from "./register/Register";
 import Login from "./login/Login";
 import Home from "./home/Home";
+import Music from "./music/Music";
 import history from "./history";
 
 const App = (props) => {
@@ -19,6 +20,7 @@ const App = (props) => {
             <Route path="/" exact component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/home" component={Home} />
+            <Route path="/music" component={Music} />
           </Switch>
         </div>
       </Router>
