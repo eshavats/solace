@@ -3,12 +3,13 @@
 // };
 
 const userReducer = (currentUser = null, action) => {
-    if(action.type === "SET_CURRENT_USER")
-    {
-        return action.payload;
-    }
+  if (action.type === "SET_CURRENT_USER") {
+    return action.payload;
+  } else if (action.type === "DEL_CURRENT_USER") {
+    return null;
+  }
 
-    return currentUser;
+  return currentUser;
 };
 
 // const userReducer = (state = INITIAL_STATE, action) => {

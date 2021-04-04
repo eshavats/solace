@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-
-import "./Home.css";
-import { articles } from "./rawData";
-import Blog from "../constants/Comment";
 import {
   Card,
   Col,
@@ -18,9 +14,13 @@ import {
   Button,
   Radio,
   message,
-  Space,
-  Spin,
+  Empty,
 } from "antd";
+import "./Home.css";
+import { articles } from "./rawData";
+import history from "../history";
+import Blog from "../constants/Comment";
+import MySpinner from "../constants/Spinner";
 
 const { TextArea } = Input;
 const { Meta } = Card;
@@ -29,17 +29,20 @@ class Home extends Component {
   state = {
     data: {},
     loading: true,
-    notFound: false,
+    updateNotFound: false,
+    blogsNotFound: false,
     title: "",
     body: "",
     status: "",
+    blogs: [],
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   async componentDidMount() {
+    if (!this.props.user) {
+      history.push("/login");
+    }
+
+    //GET COVID DATA
     try {
       const res = await axios.get(
         `https://api.covid19india.org/state_district_wise.json`
@@ -52,14 +55,33 @@ class Home extends Component {
       });
     } catch (error) {
       this.setState({
-        notFound: true,
+        updateNotFound: true,
         loading: false,
       });
+    }
+
+    //GET BLOGS DATA
+    try {
+      const res = await axios.get(
+        `https://solace-hack-kj.herokuapp.com/api/blogs`,
+        {
+          headers: {
+            Authorization: `Bearer ${this.props.user}`,
+          },
+        }
+      );
+
+      console.log(res.data);
+      this.setState({ blogs: res.data });
+    } catch (error) {
+      this.setState({
+        blogsNotFound: true,
+      });
+      console.log("Can't get Blogs");
     }
   }
 
   handleSubmit = async () => {
-
     const { title, body, status } = this.state;
 
     try {
@@ -76,15 +98,16 @@ class Home extends Component {
           },
         }
       );
+      this.setState({ title: "", body: "", status: "" });
       message.success({
         content: "Blog Successfully Submitted!",
-        duration: 5,
+        duration: 3,
         className: "my-message",
       });
     } catch (error) {
       message.error({
         content: "Blog Submission Failed!",
-        duration: 5,
+        duration: 3,
         className: "my-message",
       });
     }
@@ -96,16 +119,27 @@ class Home extends Component {
     this.setState({ ...this.state, [name]: value });
   };
 
-  render() {
-    var data = this.state.data;
-    console.log(this.props.user);
-
-    if (this.state.loading) {
+  fetchBlogs = () => {
+    return this.state.blogs.map((blog, key) => {
+      var d = new Date(blog["time"]);
       return (
-        <Space style={{ textAlign: "center" }} size="middle">
-          <Spin tip="Loading..." size="large" />
-        </Space>
+        <Blog
+          key={key}
+          title={blog["title"]}
+          body={blog["body"]}
+          status={blog["status"]}
+          date={`${d.toLocaleDateString()} ${d.toLocaleTimeString()}`}
+          likes={blog["likes"]}
+        />
       );
+    });
+  };
+
+  render() {
+    const { data, updateNotFound, blogsNotFound, loading } = this.state;
+
+    if (loading) {
+      return <MySpinner />;
     }
     return (
       <div className="homepage mb-4">
@@ -116,53 +150,62 @@ class Home extends Component {
           type="info"
           showIcon
         />
-        <div className="site-card-wrapper">
-          <Row className="m-3" gutter={16}>
-            {articles.map((art, key) => {
-              return (
-                <Col key={key} span={8} className="p-3">
-                  <Badge.Ribbon
-                    text={`Active Cases: ${data[art.title]["active"]}`}
-                  >
-                    <Badge.Ribbon
-                      placement="start"
-                      color="purple"
-                      text={`Recovered Cases: ${data[art.title]["recovered"]}`}
-                    >
-                      <Card
-                        style={{ height: 550 }}
-                        cover={
-                          <img
-                            style={{ height: 270 }}
-                            alt="img"
-                            src={art.img}
-                          />
-                        }
-                      >
-                        <Meta
-                          avatar={
-                            <Avatar className="avatar" size="large" gap={4}>
-                              {art.title.charAt(0)}
-                            </Avatar>
-                          }
-                          title={art.title}
-                          description={art.desc}
-                        />
-                      </Card>
-                    </Badge.Ribbon>
-                  </Badge.Ribbon>
-                </Col>
-              );
-            })}
-          </Row>
-        </div>
 
-        <div className="jumbotron jumbotron-fluid mt-3">
-          <div className="container">
-            <h1 className="display-4">Let's communicate</h1>
+        {/* Updates */}
+        {updateNotFound ? (
+          <Empty className="m-3" />
+        ) : (
+          <div className="site-card-wrapper">
+            <Row className="m-3" gutter={16}>
+              {articles.map((art, key) => {
+                return (
+                  <Col key={key} span={8} className="p-3">
+                    <Badge.Ribbon
+                      text={`Active Cases: ${data[art.title]["active"]}`}
+                    >
+                      <Badge.Ribbon
+                        placement="start"
+                        color="purple"
+                        text={`Recovered Cases: ${
+                          data[art.title]["recovered"]
+                        }`}
+                      >
+                        <Card
+                          style={{ height: 550 }}
+                          cover={
+                            <img
+                              style={{ height: 270 }}
+                              alt="img"
+                              src={art.img}
+                            />
+                          }
+                        >
+                          <Meta
+                            avatar={
+                              <Avatar className="avatar" size="large" gap={4}>
+                                {art.title.charAt(0)}
+                              </Avatar>
+                            }
+                            title={art.title}
+                            description={art.desc}
+                          />
+                        </Card>
+                      </Badge.Ribbon>
+                    </Badge.Ribbon>
+                  </Col>
+                );
+              })}
+            </Row>
+          </div>
+        )}
+
+        {/* Communicate */}
+        <div id="postblog" className="jumbotron jumbotron-fluid mt-3">
+          <div className="container py-1">
+            <h1 className="display-4">Let's Communicate</h1>
             <p className="lead">
               Communication is key. Let us know how you're feeling.. It'll stay
-              <b> anonymous</b>
+              <b> anonymous 😇</b>
             </p>
             <hr className="my-4" />
             <Comment
@@ -179,13 +222,14 @@ class Home extends Component {
                       <Input
                         type="text"
                         name="title"
+                        size="large"
                         value={this.state.title}
                         onChange={this.handleChange}
                       />
                     </Form.Item>
                     <Form.Item label="Body">
                       <TextArea
-                        rows={4}
+                        rows={7}
                         name="body"
                         value={this.state.body}
                         onChange={this.handleChange}
@@ -195,6 +239,7 @@ class Home extends Component {
                     <Form.Item label="Covid Status">
                       <Radio.Group
                         name="status"
+                        size="large"
                         value={this.state.status}
                         onChange={this.handleChange}
                       >
@@ -206,8 +251,8 @@ class Home extends Component {
                       </Radio.Group>
                     </Form.Item>
                     <Form.Item>
-                      <Button htmlType="submit" type="primary">
-                        Add Comment
+                      <Button size="large" htmlType="submit" type="primary">
+                        Submit Blog
                       </Button>
                     </Form.Item>
                   </Form>
@@ -216,28 +261,16 @@ class Home extends Component {
             />
           </div>
         </div>
-        <div className="blogs" style={{ margin: "0 10rem" }}>
-          <h2 className="display-4">Find out how others are doing..</h2>
 
-          <Blog
-            title="My Recovery Story"
-            description="I am interning at the orthopedic department of the Government Kilpauk Medical College in Chennai. On May 31, after my duty, I felt fatigued and went home. I had a body ache and went off to sleep without dinner. When I woke up, I had a raised temperature. I couldn't have food or water properly. It escalated quickly in the next 30 minutes, and suddenly I had difficulty in breathing. I didn't know if it was due to anxiety or Covid symptoms. I went to the hospital, gave a swab that night and was admitted to the emergency ward. My result came 24 hours later and I was positive."
-            status="Recovering"
-            date="12/03/2021 9:30PM"
-          />
-          <Blog
-            title="My Recovery Story"
-            description="I am interning at the orthopedic department of the Government Kilpauk Medical College in Chennai. On May 31, after my duty, I felt fatigued and went home. I had a body ache and went off to sleep without dinner. When I woke up, I had a raised temperature. I couldn't have food or water properly. It escalated quickly in the next 30 minutes, and suddenly I had difficulty in breathing. I didn't know if it was due to anxiety or Covid symptoms. I went to the hospital, gave a swab that night and was admitted to the emergency ward. My result came 24 hours later and I was positive."
-            status="Recovering"
-            date="12/03/2021 9:30PM"
-          />
-          <Blog
-            title="My Recovery Story"
-            description="I am interning at the orthopedic department of the Government Kilpauk Medical College in Chennai. On May 31, after my duty, I felt fatigued and went home. I had a body ache and went off to sleep without dinner. When I woke up, I had a raised temperature. I couldn't have food or water properly. It escalated quickly in the next 30 minutes, and suddenly I had difficulty in breathing. I didn't know if it was due to anxiety or Covid symptoms. I went to the hospital, gave a swab that night and was admitted to the emergency ward. My result came 24 hours later and I was positive."
-            status="Recovering"
-            date="12/03/2021 9:30PM"
-          />
-        </div>
+        {/* Blogs */}
+        {blogsNotFound ? (
+          <Empty className="m-3" />
+        ) : (
+          <div id="blogs" className="blogs" style={{ margin: "0 10rem" }}>
+            <h2 className="display-4">Find out how others are doing..</h2>
+            {this.fetchBlogs()}
+          </div>
+        )}
       </div>
     );
   }

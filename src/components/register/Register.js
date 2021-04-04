@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
 import { message } from "antd";
-import { setUser } from "../../redux/actions";
+
 import "./Register.css";
+import { setUser } from "../../redux/actions";
+import history from "../history";
 import CoronaImg from "./img/corona1.gif";
 
 class Register extends Component {
@@ -30,11 +32,14 @@ class Register extends Component {
       );
       const token = res["data"]["token"];
       this.props.setUser(token);
+
       message.success({
         content: "Registered Successfully!",
         duration: 5,
         className: "my-message",
       });
+
+      history.push("/home");
     } catch (error) {
       message.error({
         content: "Registration Failed!",
@@ -118,18 +123,22 @@ class Register extends Component {
                     </div>
                     <p className="foot">
                       Already have an account?
-                      <a
-                        href="/login"
+                      <Link
+                        to="/login"
                         style={{ color: "#ce907e", paddingLeft: "3px" }}
                       >
                         Sign In
-                      </a>
+                      </Link>
                     </p>
                   </form>
                 </div>
               </div>
               <div className="col-lg-6 p-0">
-                <img src={CoronaImg} className="img-responsive fit-image" />
+                <img
+                  alt="corona-img"
+                  src={CoronaImg}
+                  className="img-responsive fit-image"
+                />
               </div>
             </div>
           </div>
@@ -140,8 +149,7 @@ class Register extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setUser: (token) =>
-    dispatch(setUser(token))
+  setUser: (token) => dispatch(setUser(token)),
 });
 
 export default connect(null, mapDispatchToProps)(Register);

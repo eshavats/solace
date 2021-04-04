@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
 import { message } from "antd";
+
 import "./Login.css";
 import { setUser } from "../../redux/actions";
-import history from "../history"
-
+import history from "../history";
 import CoronaImg from "./img/corona1.gif";
 
 class Login extends Component {
@@ -18,7 +18,7 @@ class Login extends Component {
     const { email, password } = this.state;
 
     try {
-      const res  = await axios.post(
+      const res = await axios.post(
         `https://solace-hack-kj.herokuapp.com/api/users/sign-in`,
         {
           email,
@@ -27,16 +27,18 @@ class Login extends Component {
       );
       const token = res["data"]["token"];
       this.props.setUser(token);
+
       message.success({
         content: "Logged In Successfully!",
-        duration: 5,
+        duration: 3,
         className: "my-message",
       });
-      history.push('/home');
+
+      history.push("/home");
     } catch (error) {
       message.error({
         content: "Login Failed!",
-        duration: 5,
+        duration: 3,
         className: "my-message",
       });
     }
@@ -55,7 +57,11 @@ class Login extends Component {
           <div className="container-fluid p-0">
             <div className="row m-0">
               <div className="col-lg-6 p-0">
-                <img src={CoronaImg} className="img-responsive fit-image" />
+                <img
+                  alt="corona-img"
+                  src={CoronaImg}
+                  className="img-responsive fit-image"
+                />
               </div>
               <div className="col-lg-6  align-self-center p-0">
                 <div className="row m-0 justify-content-center">
@@ -96,7 +102,7 @@ class Login extends Component {
                     >
                       <button
                         type="submit"
-                        formaction="homepage.html"
+                        formAction="homepage.html"
                         className="btn btn-block"
                       >
                         Sign In
@@ -104,12 +110,12 @@ class Login extends Component {
                     </div>
                     <p className="foot">
                       Don't have an account?
-                      <a
-                        href="/"
+                      <Link
+                        to="/"
                         style={{ color: "#ce907e", paddingLeft: "3px" }}
                       >
                         Sign Up
-                      </a>
+                      </Link>
                     </p>
                   </form>
                 </div>
@@ -123,8 +129,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setUser: (token) =>
-    dispatch(setUser(token))
+  setUser: (token) => dispatch(setUser(token)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);
