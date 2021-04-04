@@ -84,9 +84,6 @@ const Music = (props) => {
     const { name } = event.target;
     socket.emit("play", songs[name]);
   };
-  const handleSongStop = () => {
-    socket.emit("stop");
-  };
 
   const handleSendChat = () => {
     socket.emit("music_message", { msg: chat, time: new Date() });
@@ -128,14 +125,14 @@ const Music = (props) => {
               <button
                 class="btn btn-primary btn-lg mr-4"
                 onClick={() => setRole("client")}
-                role="button"
+                
               >
                 Listen Songs
               </button>
               <button
                 class="btn btn-primary btn-lg"
                 onClick={() => setRole("server")}
-                role="button"
+                
               >
                 Play Songs
               </button>
@@ -147,7 +144,7 @@ const Music = (props) => {
               <button
                 class="btn btn-primary btn-lg mr-4"
                 onClick={handlePlaySound}
-                role="button"
+                
                 name="Paradise"
               >
                 Paradise
@@ -155,7 +152,7 @@ const Music = (props) => {
               <button
                 class="btn btn-primary btn-lg mr-4"
                 onClick={handlePlaySound}
-                role="button"
+                
                 name="Adventure"
               >
                 Adventure
