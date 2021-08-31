@@ -21,6 +21,7 @@ import { articles } from "./rawData";
 import history from "../history";
 import Blog from "../constants/Comment";
 import MySpinner from "../constants/Spinner";
+import {res as apiRes} from "./apiRespose";
 
 const { TextArea } = Input;
 const { Meta } = Card;
@@ -44,16 +45,23 @@ class Home extends Component {
 
     //GET COVID DATA
     try {
-      const res = await axios.get(
-        `https://api.covid19india.org/state_district_wise.json`
-      );
-      const stateData = res.data["Maharashtra"]["districtData"];
+      // const res = await axios({
+      //   method: 'GET',
+      //   withCredentials: false,
+      //   url: `https://api.covid19india.org/state_district_wise.json`
+      // });
+      // console.log(res);
+
+      const res = apiRes;
+      const stateData = res["Maharashtra"]["districtData"];
+      console.log(stateData);
 
       this.setState({
         data: stateData,
         loading: false,
       });
     } catch (error) {
+      console.log(error);
       this.setState({
         updateNotFound: true,
         loading: false,
