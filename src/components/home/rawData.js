@@ -18,7 +18,7 @@ const articles = [
       "http://bethliving.com/blog/wp-content/uploads/2020/04/Kangwon-Covid-19.jpeg",
     title: "Thane",
     desc:
-      "Maharashtra has reported 43,183 new Covid-19 cases, its highest one-day rise since the pandemic began. Mumbai reported 8,646 new cases, which increased its caseload to 423,419. Meanwhile, Delhi logged 3,583 fresh Covid cases, the highest daily count this year. In the wake of corona surge in the national capital, Chief Minister Arvind Kejriwal will hold an urgent meeting with the health minister and officials today.",
+      "Thane has added 193 new cases of coronavirus, raising the infection count in the Maharashtra district to 5,50,098, an official said on Thursday. Besides these new cases reported on Wednesday, eight more people also succumbed to the viral infection, which pushed the death toll in the district to 11,264, he said. The Covid-19 mortality rate in Thane stood at 2.04 per cent, he added.",
   },
 ];
 

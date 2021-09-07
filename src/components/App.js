@@ -8,6 +8,9 @@ import Register from "./register/Register";
 import Login from "./login/Login";
 import Home from "./home/Home";
 import Music from "./music/Music";
+import About from "./about/about";
+import Blogs from "./blogs/blogs";
+
 import history from "./history";
 
 const App = (props) => {
@@ -21,6 +24,9 @@ const App = (props) => {
             <Route path="/login" component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/music" component={Music} />
+            <Route path="/about" component={About} />
+            <Route path="/blogs" component={Blogs} />
+
           </Switch>
         </div>
       </Router>

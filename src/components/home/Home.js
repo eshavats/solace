@@ -144,7 +144,7 @@ class Home extends Component {
   };
 
   render() {
-    const { data, updateNotFound, blogsNotFound, loading } = this.state;
+    const { data, updateNotFound, loading } = this.state;
 
     if (loading) {
       return <MySpinner />;
@@ -269,16 +269,6 @@ class Home extends Component {
             />
           </div>
         </div>
-
-        {/* Blogs */}
-        {blogsNotFound ? (
-          <Empty className="m-3" />
-        ) : (
-          <div id="blogs" className="blogs" style={{ margin: "0 10rem" }}>
-            <h2 className="display-4">Find out how others are doing..</h2>
-            {this.fetchBlogs()}
-          </div>
-        )}
       </div>
     );
   }

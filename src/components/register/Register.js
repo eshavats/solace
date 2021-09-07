@@ -61,6 +61,13 @@ class Register extends Component {
         <div className="wrapper">
           <div className="container-fluid p-0">
             <div className="row m-0">
+              <div className="col-lg-6 p-0">
+                <img
+                  alt="corona-img"
+                  src={CoronaImg}
+                  className="img-responsive fit-image"
+                />
+              </div>
               <div className="col-lg-6  align-self-center p-0">
                 <div className="row m-0 justify-content-center">
                   <form className="mt-0" onSubmit={this.handleSubmit}>
@@ -132,13 +139,6 @@ class Register extends Component {
                     </p>
                   </form>
                 </div>
-              </div>
-              <div className="col-lg-6 p-0">
-                <img
-                  alt="corona-img"
-                  src={CoronaImg}
-                  className="img-responsive fit-image"
-                />
               </div>
             </div>
           </div>

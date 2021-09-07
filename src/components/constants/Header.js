@@ -57,14 +57,14 @@ class Header extends React.Component {
                     </Link>
                   </li>
                   <li className="nav-item mr-2">
-                    <a href="#postblog" className="nav-link">
-                      Share
-                    </a>
+                  <Link to="/blogs" className="nav-link">
+                      Blogs
+                    </Link>
                   </li>
                   <li className="nav-item mr-2">
-                    <a href="#blogs" className="nav-link">
-                      Blogs
-                    </a>
+                    <Link to="/about" className="nav-link">
+                      About
+                    </Link>
                   </li>
                   <li className="nav-item mr-2 dropdown">
                     <a
