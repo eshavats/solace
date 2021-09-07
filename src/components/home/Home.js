@@ -18,6 +18,7 @@ import {
 } from "antd";
 import "./Home.css";
 import { articles } from "./rawData";
+import news from "./news"
 import history from "../history";
 import Blog from "../constants/Comment";
 import MySpinner from "../constants/Spinner";
@@ -127,17 +128,16 @@ class Home extends Component {
     this.setState({ ...this.state, [name]: value });
   };
 
-  fetchBlogs = () => {
-    return this.state.blogs.map((blog, key) => {
-      var d = new Date(blog["time"]);
+  fetchNews = () => {
+    return news.map((blog, key) => {
       return (
         <Blog
           key={key}
           title={blog["title"]}
-          body={blog["body"]}
-          status={blog["status"]}
-          date={`${d.toLocaleDateString()} ${d.toLocaleTimeString()}`}
-          likes={blog["likes"]}
+          body={blog["content"]}
+          status={blog["source"]["name"]}
+          date={blog["publishedAt"]}
+          likes={blog["source"]["likes"]}
         />
       );
     });
@@ -269,6 +269,12 @@ class Home extends Component {
             />
           </div>
         </div>
+      
+        <div id="news" className="news" style={{ margin: "2rem 10rem" }}>
+            <h2 className="display-4">Find the latest news</h2>
+            {this.fetchNews()}
+        </div>
+      
       </div>
     );
   }

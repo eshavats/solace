@@ -4,7 +4,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 23,
     "name": "India.com"
     },
     "author": "India.com Lifestyle Staff",
@@ -13,14 +13,14 @@ const news = [
     "url": "https://www.india.com/health/experiencing-hairfall-while-recovering-from-covid-19-virus-heres-how-biotin-can-help-4940045/",
     "urlToImage": "https://static.india.com/wp-content/uploads/2021/09/pjimage-87-1.jpg",
     "publishedAt": "2021-09-07T06:31:55Z",
-    "content": "Home &gt; Health Published: September 7, 2021 12:01 PM IST By India.com Lifestyle StaffEmail Edited by KS SwatiEmail The impact of covid-19 has also to uncontrolled hair fall. People have usuall… [+2935 chars]"
+    "content": "Lifestyle StaffEmail Edited by KS SwatiEmail The impact of covid-19 has also to uncontrolled hair fall. People have usuall… [+2935 chars]"
     },
     
     {
     
     "source": {
     
-    "id": null,
+    "likes": 34,
     "name": "Livemint"
     },
     "author": "Livemint",
@@ -36,7 +36,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 63,
     "name": "Firstpost"
     },
     
@@ -53,7 +53,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 67,
     "name": "Devdiscourse"
     },
     "author": "Reuters",
@@ -68,7 +68,7 @@ const news = [
     {
     
     "source": {
-    "id": "google-news",
+    "likes": 65,
     "name": "Google News"
     },
     
@@ -88,7 +88,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 12,
     "name": "Republic World"
     },
     "author": "Zaini Majeed",
@@ -104,7 +104,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 78,
     "name": "THE WEEK"
     },
     "author": "PTI",
@@ -120,7 +120,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 12,
     "name": "中国日报"
     },
     "author": "刘小卓",
@@ -136,7 +136,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 98,
     "name": "Sify News"
     },
     "author": "IANS",
@@ -151,7 +151,7 @@ const news = [
     {
     
     "source": {
-    "id": "the-times-of-india",
+    "likes": 42,
     "name": "The Times of India"
     },
     "author": "Umesh Isalkar",
@@ -166,7 +166,7 @@ const news = [
     {
     
     "source": {
-    "id": "google-news",
+    "likes": 12,
     "name": "Google News"
     },
     
@@ -186,7 +186,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 28,
     "name": "PRI"
     },
     
@@ -203,7 +203,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 29,
     "name": "BloombergQuint"
     },
     "author": "Antony Sguazzin",
@@ -219,7 +219,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 91,
     "name": "NDTV News"
     },
     
@@ -236,7 +236,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 72,
     "name": "Medical Xpress"
     },
     "author": "Karen Willis and Natasha Smallwood",
@@ -252,7 +252,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 19,
     "name": "CNBCTV18"
     },
     
@@ -269,7 +269,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 82,
     "name": "Malay Mail"
     },
     "author": "Malay Mail",
@@ -285,7 +285,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 72,
     "name": "Sky.com"
     },
     "author": "David Mercer",
@@ -302,7 +302,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 17,
     "name": "DNA India"
     },
     "author": "DNA Web Team",
@@ -319,7 +319,7 @@ const news = [
     
     "source": {
     
-    "id": null,
+    "likes": 80,
     "name": "News18"
     },
     "author": "Himani Chandna",
