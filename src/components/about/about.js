@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Alert } from "antd";
 
 class About extends Component {
+
+    componentDidMount() {
+        document.title = "About Solace"
+    }
     render() {
         return (
             <div className="homepage mb-4">

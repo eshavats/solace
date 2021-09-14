@@ -12,6 +12,10 @@ import CoronaImg from "./img/corona1.gif";
 class Register extends Component {
   state = { name: "", email: "", password: "", confirmPassword: "" };
 
+  componentDidMount() {
+    document.title = "Register | Solace"
+  }
+
   handleSubmit = async (event) => {
     event.preventDefault();
     const { name, email, password, confirmPassword } = this.state;

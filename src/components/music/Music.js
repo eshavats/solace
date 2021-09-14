@@ -42,6 +42,8 @@ const Music = (props) => {
   const [chat, setChat] = useState("");
 
   useEffect(() => {
+    document.title = "Vibe & Chill"
+
     function receiveMessageAudio(m) {
       console.log(m);
 

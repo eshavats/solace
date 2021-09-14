@@ -12,6 +12,10 @@ import CoronaImg from "./img/corona1.gif";
 class Login extends Component {
   state = { email: "", password: "" };
 
+  componentDidMount() {
+    document.title = "Login | Solace"
+  }
+
   handleSubmit = async (event) => {
     event.preventDefault();
 

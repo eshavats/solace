@@ -44,6 +44,9 @@ class Home extends Component {
       history.push("/login");
     }
 
+    document.title = "Solace | Connect, chat, and find solace"
+
+
     //GET COVID DATA
     try {
       // const res = await axios({

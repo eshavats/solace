@@ -26,6 +26,8 @@ class Blogs extends Component {
       history.push("/login");
     }
 
+    document.title = "Blogs at Solace"
+
     //GET BLOGS DATA
     try {
       const res = await axios.get(
