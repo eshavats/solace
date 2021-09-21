@@ -10,6 +10,7 @@ import Home from "./home/Home";
 import Music from "./music/Music";
 import About from "./about/about";
 import Blogs from "./blogs/blogs";
+import Create from "./create/Create"
 
 import history from "./history";
 
@@ -23,6 +24,7 @@ const App = (props) => {
             <Route path="/" exact component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/home" component={Home} />
+            <Route path="/create" component={Create} />
             <Route path="/music" component={Music} />
             <Route path="/about" component={About} />
             <Route path="/blogs" component={Blogs} />

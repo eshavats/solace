@@ -15,7 +15,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const headerClass = this.props.user ? "sticky-top" : "fixed-top";
+    const headerClass = "sticky-top";
     return (
       <div className="my-header">
         <nav
@@ -31,7 +31,7 @@ class Header extends React.Component {
             />
             Solace
           </Link>
-          {this.props.user ? (
+          
             <>
               <button
                 className="navbar-toggler"
@@ -54,6 +54,11 @@ class Header extends React.Component {
                   <li className="nav-item mr-2">
                     <Link to="/music" className="nav-link">
                       Vibe & Chill
+                    </Link>
+                  </li>
+                  <li className="nav-item mr-2">
+                  <Link to="/create" className="nav-link">
+                      Create
                     </Link>
                   </li>
                   <li className="nav-item mr-2">
@@ -101,16 +106,15 @@ class Header extends React.Component {
                     </div>
                   </li>
                 </ul>
-                <ul className="navbar-nav" style={{ marginLeft: "52em" }}>
+                {/* <ul className="navbar-nav" style={{ marginLeft: "52em" }}>
                   <li className="nav-item mr-2">
                     <Link onClick={this.logout} className="nav-link logout">
                       <i className="fas fa-sign-out-alt mr-2 logout"></i>Logout
                     </Link>
                   </li>
-                </ul>
+                </ul> */}
               </div>{" "}
             </>
-          ) : null}
         </nav>
       </div>
     );

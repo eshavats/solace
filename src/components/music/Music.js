@@ -33,9 +33,7 @@ const Message = (props) => {
 };
 
 const Music = (props) => {
-  if (!props.user) {
-    history.push("/login");
-  }
+
   const [role, setRole] = useState("");
   const [playing, setPlaying] = useState("");
   const [chats, setChats] = useState([]);

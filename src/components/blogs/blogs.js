@@ -22,9 +22,6 @@ class Blogs extends Component {
   };
 
   async componentDidMount() {
-    if (!this.props.user) {
-      history.push("/login");
-    }
 
     document.title = "Blogs at Solace"
 

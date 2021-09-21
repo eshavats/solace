@@ -40,9 +40,6 @@ class Home extends Component {
   };
 
   async componentDidMount() {
-    if (!this.props.user) {
-      history.push("/login");
-    }
 
     document.title = "Solace | Connect, chat, and find solace"
 
@@ -73,24 +70,24 @@ class Home extends Component {
     }
 
     //GET BLOGS DATA
-    try {
-      const res = await axios.get(
-        `https://solace-hack-kj.herokuapp.com/api/blogs`,
-        {
-          headers: {
-            Authorization: `Bearer ${this.props.user}`,
-          },
-        }
-      );
+    // try {
+    //   const res = await axios.get(
+    //     `https://solace-hack-kj.herokuapp.com/api/blogs`,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${this.props.user}`,
+    //       },
+    //     }
+    //   );
 
-      console.log(res.data);
-      this.setState({ blogs: res.data });
-    } catch (error) {
-      this.setState({
-        blogsNotFound: true,
-      });
-      console.log("Can't get Blogs");
-    }
+    //   console.log(res.data);
+    //   this.setState({ blogs: res.data });
+    // } catch (error) {
+    //   this.setState({
+    //     blogsNotFound: true,
+    //   });
+    //   console.log("Can't get Blogs");
+    // }
   }
 
   handleSubmit = async () => {
@@ -209,69 +206,6 @@ class Home extends Component {
             </Row>
           </div>
         )}
-
-        {/* Communicate */}
-        <div id="postblog" className="jumbotron jumbotron-fluid mt-3">
-          <div className="container py-1">
-            <h1 className="display-4">Let's Communicate</h1>
-            <p className="lead">
-              Communication is key. Let us know how you're feeling.. It'll stay
-              <b> anonymous 😇</b>
-            </p>
-            <hr className="my-4" />
-            <Comment
-              avatar={
-                <Avatar
-                  size="large"
-                  src="https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png"
-                />
-              }
-              content={
-                <>
-                  <Form layout="vertical" onFinish={this.handleSubmit}>
-                    <Form.Item label="Title">
-                      <Input
-                        type="text"
-                        name="title"
-                        size="large"
-                        value={this.state.title}
-                        onChange={this.handleChange}
-                      />
-                    </Form.Item>
-                    <Form.Item label="Body">
-                      <TextArea
-                        rows={7}
-                        name="body"
-                        value={this.state.body}
-                        onChange={this.handleChange}
-                        placeholder="Tell us how you're feeling..."
-                      />
-                    </Form.Item>
-                    <Form.Item label="Covid Status">
-                      <Radio.Group
-                        name="status"
-                        size="large"
-                        value={this.state.status}
-                        onChange={this.handleChange}
-                      >
-                        <Radio.Button value="Healthy">Healthy</Radio.Button>
-                        <Radio.Button value="Recovering">
-                          Recovering
-                        </Radio.Button>
-                        <Radio.Button value="Recovered">Recovered</Radio.Button>
-                      </Radio.Group>
-                    </Form.Item>
-                    <Form.Item>
-                      <Button size="large" htmlType="submit" type="primary">
-                        Submit Blog
-                      </Button>
-                    </Form.Item>
-                  </Form>
-                </>
-              }
-            />
-          </div>
-        </div>
       
         <div id="news" className="news" style={{ margin: "2rem 10rem" }}>
             <h2 className="display-4">Find the latest news</h2>
