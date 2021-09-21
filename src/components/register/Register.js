@@ -13,7 +13,7 @@ class Register extends Component {
   state = { name: "", email: "", password: "", confirmPassword: "" };
 
   componentDidMount() {
-    document.title = "Register | Solace"
+    document.title = "Register at Solace | Connect, chat, and find solace"
   }
 
   handleSubmit = async (event) => {

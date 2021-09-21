@@ -13,7 +13,7 @@ class Login extends Component {
   state = { email: "", password: "" };
 
   componentDidMount() {
-    document.title = "Login | Solace"
+    document.title = "Login at Solace | Connect, chat, and find solace"
   }
 
   handleSubmit = async (event) => {

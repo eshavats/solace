@@ -34,7 +34,7 @@ class Home extends Component {
 
   async componentDidMount() {
 
-    document.title = "Solace | Connect, chat, and find solace"
+    document.title = "Solace | Connect, chat, read latest news and articles and find solace"
 
 
     //GET COVID DATA
