@@ -5,7 +5,6 @@ import {
   Alert,
   Empty,
 } from "antd";
-import history from "../history";
 import Blog from "../constants/Comment";
 import MySpinner from "../constants/Spinner";
 

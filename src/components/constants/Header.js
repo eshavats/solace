@@ -46,9 +46,9 @@ class Header extends React.Component {
               </button>
               <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">
-                  <li className="nav-item active mr-2">
+                  <li className="nav-item mr-2">
                     <Link to="/home" className="nav-link">
-                      Home <span className="sr-only">(current)</span>
+                      Home
                     </Link>
                   </li>
                   <li className="nav-item mr-2">
@@ -106,13 +106,21 @@ class Header extends React.Component {
                     </div>
                   </li>
                 </ul>
-                {/* <ul className="navbar-nav" style={{ marginLeft: "52em" }}>
+                {this.props.user ? <ul className="navbar-nav" style={{ marginLeft: "52em" }}>
                   <li className="nav-item mr-2">
                     <Link onClick={this.logout} className="nav-link logout">
                       <i className="fas fa-sign-out-alt mr-2 logout"></i>Logout
                     </Link>
                   </li>
-                </ul> */}
+                </ul> : <ul className="navbar-nav" style={{ marginLeft: "50em" }}>
+                  <li className="nav-item mr-2">
+                    <Link to="/login" className="nav-link logout">
+                      <i className="fas fa-sign-in-alt mr-2 login"></i>Login
+                    </Link>
+                  </li>
+                </ul> }
+                
+
               </div>{" "}
             </>
         </nav>

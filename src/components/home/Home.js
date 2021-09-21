@@ -8,23 +8,16 @@ import {
   Avatar,
   Badge,
   Alert,
-  Comment,
-  Form,
-  Input,
-  Button,
-  Radio,
   message,
   Empty,
 } from "antd";
 import "./Home.css";
 import { articles } from "./rawData";
 import news from "./news"
-import history from "../history";
 import Blog from "../constants/Comment";
 import MySpinner from "../constants/Spinner";
 import {res as apiRes} from "./apiRespose";
 
-const { TextArea } = Input;
 const { Meta } = Card;
 
 class Home extends Component {
@@ -69,25 +62,6 @@ class Home extends Component {
       });
     }
 
-    //GET BLOGS DATA
-    // try {
-    //   const res = await axios.get(
-    //     `https://solace-hack-kj.herokuapp.com/api/blogs`,
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${this.props.user}`,
-    //       },
-    //     }
-    //   );
-
-    //   console.log(res.data);
-    //   this.setState({ blogs: res.data });
-    // } catch (error) {
-    //   this.setState({
-    //     blogsNotFound: true,
-    //   });
-    //   console.log("Can't get Blogs");
-    // }
   }
 
   handleSubmit = async () => {
@@ -208,7 +182,7 @@ class Home extends Component {
         )}
       
         <div id="news" className="news" style={{ margin: "2rem 10rem" }}>
-            <h2 className="display-4">Find the latest news</h2>
+            <h2 className="display-4">Find the latest health news and trending articles</h2>
             {this.fetchNews()}
         </div>
       

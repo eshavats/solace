@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import {
-  Card,
-  Col,
-  Row,
   Avatar,
-  Badge,
   Alert,
   Comment,
   Form,
@@ -14,15 +10,12 @@ import {
   Button,
   Radio,
   message,
-  Empty,
 } from "antd";
 
 import history from "../history";
-import Blog from "../constants/Comment";
 import MySpinner from "../constants/Spinner";
 
 const { TextArea } = Input;
-const { Meta } = Card;
 
 class Create extends Component {
   state = {

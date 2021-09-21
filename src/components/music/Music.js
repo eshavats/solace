@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import audioFile from "./audio.mp3";
 import audioFile2 from "./audio2.mp3";
 import "./Music.css";
-import history from "../history";
 
 const audio = new Audio();
 const socket = io.connect("https://solace-hack-kj.herokuapp.com", {
