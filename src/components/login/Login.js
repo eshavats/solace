@@ -74,7 +74,7 @@ class Login extends Component {
                     data-aos="zoom-in"
                     onSubmit={this.handleSubmit}
                   >
-                    <div className="logdet">Login</div>
+                    <h1 className="logdet">Login</h1>
 
                     <div className="form-group">
                       <input

@@ -75,7 +75,7 @@ class Register extends Component {
               <div className="col-lg-6  align-self-center p-0">
                 <div className="row m-0 justify-content-center">
                   <form className="mt-0" onSubmit={this.handleSubmit}>
-                    <div className="logdet">Register</div>
+                    <h1 className="logdet">Register</h1>
                     <div className="form-group">
                       <input
                         type="text"

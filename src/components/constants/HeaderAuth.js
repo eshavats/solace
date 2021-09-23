@@ -13,7 +13,7 @@ class HeaderAuth extends React.Component {
               width="40"
               height="40"
               className="d-inline-block align-top mr-2"
-              alt=""
+              alt="solace-logo"
             />
             Solace
           </a>

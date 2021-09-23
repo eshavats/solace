@@ -9,7 +9,7 @@ import Login from "./login/Login";
 import Home from "./home/Home";
 import Music from "./music/Music";
 import About from "./about/about";
-import Blogs from "./blogs/blogs";
+import Blogs from "./blogs/Blogs";
 import Create from "./create/Create"
 
 import history from "./history";

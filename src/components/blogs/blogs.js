@@ -7,6 +7,7 @@ import {
 } from "antd";
 import Blog from "../constants/Comment";
 import MySpinner from "../constants/Spinner";
+import "./Blogs.css"
 
 class Blogs extends Component {
   state = {
@@ -81,8 +82,8 @@ class Blogs extends Component {
         {blogsNotFound ? (
           <Empty className="m-3" />
         ) : (
-          <div id="blogs" className="blogs" style={{ margin: "2rem 10rem" }}>
-            <h2 className="display-4">Find out how others are doing..</h2>
+          <div id="blogs" className="blogs-div">
+            <h1 className="display-4">Find out how others are doing..</h1>
             {this.fetchBlogs()}
           </div>
         )}

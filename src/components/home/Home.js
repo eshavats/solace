@@ -157,7 +157,7 @@ class Home extends Component {
                           cover={
                             <img
                               style={{ height: 270 }}
-                              alt="img"
+                              alt="people-img"
                               src={art.img}
                             />
                           }
@@ -182,7 +182,7 @@ class Home extends Component {
         )}
       
         <div id="news" className="news" style={{ margin: "2rem 10rem" }}>
-            <h2 className="display-4">Find the latest health news and trending articles</h2>
+            <h1 className="display-4 mb-3">Find the latest health news and trending articles</h1>
             {this.fetchNews()}
         </div>
       
