@@ -21,7 +21,7 @@ class Header extends React.Component {
         <nav
           className={`navbar ${headerClass} navbar-expand-lg navbar-light bg-light`}
         >
-          <Link to="/" className="navbar-brand">
+          <a href="/" className="navbar-brand">
             <img
               src={Logo}
               width="40"
@@ -30,7 +30,7 @@ class Header extends React.Component {
               alt="solace-logo"
             />
             Solace
-          </Link>
+          </a>
           
             <>
               <button
@@ -47,29 +47,29 @@ class Header extends React.Component {
               <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">
                   <li className="nav-item mr-2">
-                    <Link to="/home" className="nav-link">
+                    <a href="/home" className="nav-link">
                       Home
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item mr-2">
-                    <Link to="/music" className="nav-link">
+                    <a href="/music" className="nav-link">
                       Vibe & Chill
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item mr-2">
-                  <Link to="/create" className="nav-link">
+                    <a href="/create" className="nav-link">
                       Create
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item mr-2">
-                  <Link to="/blogs" className="nav-link">
+                  <a href="/blogs" className="nav-link">
                       Blogs
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item mr-2">
-                    <Link to="/about" className="nav-link">
+                    <a href="/about" className="nav-link">
                       About
-                    </Link>
+                    </a>
                   </li>
                   <li className="nav-item mr-2 dropdown">
                     <a
@@ -114,9 +114,9 @@ class Header extends React.Component {
                   </li>
                 </ul> : <ul className="navbar-nav" style={{ marginLeft: "50em" }}>
                   <li className="nav-item mr-2">
-                    <Link to="/login" className="nav-link logout">
+                    <a href="/login" className="nav-link logout">
                       <i className="fas fa-sign-in-alt mr-2 login"></i>Login
-                    </Link>
+                    </a>
                   </li>
                 </ul> }
                 
